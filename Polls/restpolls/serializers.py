@@ -13,7 +13,7 @@ class PollsSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    """Сериализация модели опроса"""
+    """Сериализация модели вопроса"""
     poll = PollsSerializer(read_only=True)
     class Meta:
         model = Question
@@ -24,7 +24,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AnswersSerializer(serializers.ModelSerializer):
-    """Сериализация модели опроса"""
+    """Сериализация модели ответа"""
     question = QuestionSerializer( read_only=True)
     class Meta:
         model = Answers
@@ -35,14 +35,14 @@ class AnswersSerializer(serializers.ModelSerializer):
 
 
 class StatisticSerializer(serializers.ModelSerializer):
-    """Сериализация модели опроса"""
+    """Сериализация модели статистики"""
     answers = AnswersSerializer(read_only=True)
     class Meta:
         model = Statistic
         fields = ['user', 'answers']
 
 class StatisticSetSerializer(serializers.ModelSerializer):
-    """Сериализация модели опроса"""
+    """Сериализация модели статистики"""
     class Meta:
         model = Statistic
         fields = ['user', 'answers']
